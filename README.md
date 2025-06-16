@@ -117,7 +117,7 @@ The primary differences lie in the accuracy and efficiency of the solvers. The a
 The following graph shows a direct visual comparison of the solutions produced by different methods for the `HIF-1` variable. The superiority of the higher-order and adaptive methods is clear.
 
 |<img width="500" alt="Baseline" src="Graphs/Baseline/solution_yhif.png">|<img width="500" alt="Method1" src="Graphs/Method 1/solution_yhif.png">|
-|<img width="500" alt="Method2" src="Graphs/Method 2/solution_yhif.png">|<img width="500" hight="500" alt="PINN" src="Graphs/PINN/pinn_solution_comparison_yhif.png">|
+|<img width="500" alt="Method2" src="Graphs/Method 2/solution_yhif.png">|<img width="500" height="500" alt="PINN" src="Graphs/PINN/pinn_solution_comparison_yhif.png">|
 
 
 ---
