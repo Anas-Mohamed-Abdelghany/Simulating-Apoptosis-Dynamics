@@ -1,6 +1,5 @@
 # Simulating the Dynamics of Programmed Cell Death 🧬
 
-![GitHub top language](https://img.shields.io/github/languages/top/Anas-Mohamed-Abdelghany/Simulating-Apoptosis-Dynamics)
 ![GitHub repo size](https://img.shields.io/github/repo-size/Anas-Mohamed-Abdelghany/Simulating-Apoptosis-Dynamics)
 ![GitHub last commit](https://img.shields.io/github/last-commit/Anas-Mohamed-Abdelghany/Simulating-Apoptosis-Dynamics)
 ![GitHub license](https://img.shields.io/github/license/Anas-Mohamed-Abdelghany/Simulating-Apoptosis-Dynamics)
