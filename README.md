@@ -3,7 +3,6 @@
 ![GitHub repo size](https://img.shields.io/github/repo-size/Anas-Mohamed-Abdelghany/Simulating-Apoptosis-Dynamics)
 ![GitHub last commit](https://img.shields.io/github/last-commit/Anas-Mohamed-Abdelghany/Simulating-Apoptosis-Dynamics)
 ![GitHub license](https://img.shields.io/github/license/Anas-Mohamed-Abdelghany/Simulating-Apoptosis-Dynamics)
-![GitHub stars](https://img.shields.io/github/stars/Anas-Mohamed-Abdelghany/Simulating-Apoptosis-Dynamics?style=social)
 
 This repository contains the source code, analysis scripts, and documentation for the paper **"Simulating the Dynamics of Programmed Cell Death,"** a project focused on the comprehensive evaluation of numerical and machine learning methods for solving an Ordinary Differential Equation (ODE) model of apoptosis.
 
