@@ -106,15 +106,38 @@ The PINN represents a complete paradigm shift from traditional numerical methods
 2.  **Physics Loss:** The network's derivative (calculated via automatic differentiation) must satisfy the governing ODEs at all points.
 By forcing the network to obey the laws of physics defined by the equations, the PINN learns the solution trajectory without being given any pre-computed data points.
 
-## 📊 Key Results and Visualizations
+## 📊 Simulation Results and Discussion
 
-Our analysis confirms that the apoptosis model has a **stable equilibrium attractor**. Regardless of the initial conditions, all solvers converge to the same final state, demonstrating the robustness of the model.
+A quantitative analysis was performed to compare the four implemented solvers using the initial condition `y0 = [1,0,0,0,0,0]`. The solutions were evaluated at key time points to observe their behavior during both the transient and steady-state phases.
 
-The primary differences lie in the accuracy and efficiency of the solvers. The adaptive RKF45 method provides the most reliable solution, which we use as a baseline to evaluate the others.
+The results show that all four methods—RKF45, RK4, Euler, and the PINN (ML)—produce very similar solution values for each variable. The close agreement demonstrates that the system is numerically stable and that each method, from the high-precision RKF45 to the data-driven PINN, is capable of accurately capturing the system's dynamics.
 
-#### Visual Comparison of Solver Solutions
+### Comparison of Solution Values at Key Time Points
 
-The following graph shows a direct visual comparison of the solutions produced by different methods for the `HIF-1` variable. The superiority of the higher-order and adaptive methods is clear.
+The following table presents the calculated concentrations for each variable at `t = 25, 50, 75, 100`.
+
+| Method | Time | y_hif | y_o2 | y_p300 | y_p53 | y_casp | y_kp |
+| :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- |
+| **RKF45** | 25 | 0.5407 | 2.6699 | 0.4732 | 0.4587 | 1.2789 | 0.5693 |
+| | 50 | 0.5037 | 2.8410 | 0.5773 | 0.4941 | 1.4711 | 0.5266 |
+| | 75 | 0.4996 | 2.8618 | 0.5950 | 0.4968 | 1.4943 | 0.5223 |
+| | 100 | 0.4991 | 2.8646 | 0.5978 | 0.4970 | 1.4968 | 0.5219 |
+| **RK4** | 25 | 0.5420 | 2.6645 | 0.4706 | 0.4576 | 1.2735 | 0.5706 |
+| | 50 | 0.5038 | 2.8407 | 0.5771 | 0.4940 | 1.4708 | 0.5267 |
+| | 75 | 0.4996 | 2.8618 | 0.5950 | 0.4968 | 1.4943 | 0.5223 |
+| | 100 | 0.4991 | 2.8646 | 0.5978 | 0.4970 | 1.4968 | 0.5219 |
+| **Euler** | 25 | 0.5419 | 2.6647 | 0.4707 | 0.4576 | 1.2737 | 0.5705 |
+| | 50 | 0.5038 | 2.8408 | 0.5771 | 0.4940 | 1.4709 | 0.5267 |
+| | 75 | 0.4996 | 2.8618 | 0.5950 | 0.4968 | 1.4943 | 0.5223 |
+| | 100 | 0.4991 | 2.8646 | 0.5978 | 0.4970 | 1.4968 | 0.5219 |
+| **PINN (ML)**| 25 | 0.5469 | 2.6449 | 0.4661 | 0.4501 | 1.2718 | 0.5664 |
+| | 50 | 0.5081 | 2.8231 | 0.5672 | 0.4841 | 1.4567 | 0.5278 |
+| | 75 | 0.4961 | 2.8538 | 0.5916 | 0.4933 | 1.4908 | 0.5188 |
+| | 100 | 0.5027 | 2.8491 | 0.4887 | 0.4887 | 1.4878 | 0.5228 |
+
+### Visual Comparison
+
+The following graph shows a direct visual comparison of the solutions produced by each method for the `HIF-1` variable.
 
 |<img width="500" alt="Baseline" src="Graphs/Baseline/solution_yhif.png">|<img width="500" alt="Method1" src="Graphs/Method 1/solution_yhif.png">|
 |<img width="500" alt="Method2" src="Graphs/Method 2/solution_yhif.png">|<img width="500" height="375" alt="PINN" src="Graphs/PINN/pinn_solution_comparison_yhif.png">|
