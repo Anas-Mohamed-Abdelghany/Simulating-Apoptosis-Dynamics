@@ -13,6 +13,7 @@ This repository contains the source code, analysis scripts, and documentation fo
 * [Project Structure](#-project-structure)
 * [How to Run the Analyses](#-how-to-run-the-analyses)
 * [Key Results and Visualizations](#-Simulation-Results-and-Discussion)
+* [Future Work](#-Future-Work-and-Improvements)
 * [Authors](#-authors)
 * [License](#-license)
 * [Acknowledgments](#-acknowledgments)
@@ -142,7 +143,33 @@ The following graph shows a direct visual comparison of the solutions produced b
 |<img width="500" alt="Baseline" src="Graphs/Baseline/solution_yhif.png">|<img width="500" alt="Method1" src="Graphs/Method 1/solution_yhif.png">|
 |<img width="500" alt="Method2" src="Graphs/Method 2/solution_yhif.png">|<img width="500" height="375" alt="PINN" src="Graphs/PINN/pinn_solution_comparison_yhif.png">|
 
+---
 
+## 💡 Future Work and Improvements
+
+This project serves as a strong foundation for further exploration into advanced computational techniques for systems biology. Several key areas for future improvements and research are identified:
+
+### 1. Solving the Inverse Problem with PINNs
+The most significant area for future work is extending the Physics-Informed Neural Network (PINN) framework to solve the **inverse problem**. 
+-   **Challenge:** While this paper focused on the "forward problem" (simulating the system with known parameters), a more impactful challenge is to estimate unknown biological parameters (e.g., the reaction rate constants `a_i`) from sparse and potentially noisy experimental data.
+-   **PINN Advantage:** A PINN can be trained to match known data points while simultaneously being constrained by the ODEs. This allows it to deduce the most likely parameter values that fit both the data and the known physics.
+-   **Next Step:** A future study could compare a PINN's performance in parameter estimation against traditional optimization methods.
+
+### 2. Development of Hybrid Solvers
+An exciting research direction is the creation of **hybrid models** that combine the strengths of traditional numerical solvers and neural networks.
+-   **Concept:** A fast numerical solver like RK4 could generate a high-quality initial guess for the solution, which could then be rapidly refined by a PINN. This could dramatically reduce the training time required for the PINN to converge.
+-   **Alternative:** A neural network could be used to learn a complex, data-driven term within an ODE that is then integrated into a larger system solved by a traditional method, allowing for models that mix known physics with learned behavior.
+
+### 3. Stochastic and Multi-Scale Modeling
+The current ODE model is deterministic, describing the average behavior of many cells. However, biological processes at the single-cell level are inherently stochastic (random).
+-   **Improvement:** A future enhancement would be to develop a **Stochastic Differential Equation (SDE)** version of the model.
+-   **Benefit:** This would allow for the simulation of cell-to-cell variability and noise, which are often crucial for understanding phenomena like drug resistance or why some cells in a population undergo apoptosis while others survive.
+
+### 4. Model Expansion and Validation
+The current six-variable model is a necessary simplification of the true biological complexity.
+-   **Next Step:** The model could be **expanded** by incorporating additional key proteins or feedback loops known to be important in the apoptosis pathway (e.g., distinguishing between different caspase types like caspase-8, -9, and -3, or including the Bcl-2 protein family).
+-   **Validation:** The expanded model would then need to be rigorously validated by fitting its parameters to new experimental time-course data, making it a more powerful predictive tool.
+  
 ---
 
 ## 👥 Authors
@@ -170,3 +197,7 @@ This project is licensed under the **MIT License**. See the [LICENSE](LICENSE) f
 ## 🙏 Acknowledgments
 
 This work is based on the apoptosis model originally proposed by P. Laise, D. Fanelli, and A. Arcangeli in their 2012 paper, "A dynamical model of apoptosis and its role in tumor progression." We thank them for providing a robust and interesting system for our analysis.
+
+## 📞 Contact
+Email: anas.bayoumi05@eng-st.cu.edu.eg <br>
+LinkedIn: https://www.linkedin.com/in/anas-mohamed-716959313/
