@@ -3,7 +3,6 @@ import matplotlib.pyplot as plt
 import pandas as pd
 import sys
 
-
 # Define parameters from Table 3.3
 params = {
     "ahif": 1.52,
@@ -52,63 +51,46 @@ def runge_kutta_4(f, y0, t0, tf, dt, p):
 
     return t_vals, y_vals
 
-# Time settings
-t0 = 0
-tf = 100  # Updated to match figure range
-dt = 0.01
+# --- Main Execution Block ---
 
-# Solve the system for both initial conditions
-y0_1 = np.array([1.0, 0.0, 0.0, 0.0, 0.0, 0.0])
-y0_0 = np.array([0.0, 0.0, 0.0, 0.0, 0.0, 0.0])
+if __name__ == "__main__":
+    # --- Define settings and initial conditions FIRST ---
+    t0, tf, dt = 0, 100, 0.01
+    
+    # Define BOTH initial conditions here
+    y0_1 = np.array([1.0, 0.0, 0.0, 0.0, 0.0, 0.0])
+    y0_0 = np.array([0.0, 0.0, 0.0, 0.0, 0.0, 0.0])
 
-t_vals_1, y_vals_1 = runge_kutta_4(dydt, y0_1, t0, tf, dt, params)
-t_vals_0, y_vals_0 = runge_kutta_4(dydt, y0_0, t0, tf, dt, params)
+    # --- Now, solve for both ---
+    print("Running RK4 solver for standard IC...")
+    t_vals_1, y_vals_1 = runge_kutta_4(dydt, y0_1, t0, tf, dt, params)
+    
+    print("Running RK4 solver for zero IC...")
+    t_vals_0, y_vals_0 = runge_kutta_4(dydt, y0_0, t0, tf, dt, params)
+    
+    print("Solvers finished. Generating plots...")
+    
+    # --- Export to CSV
+    df1 = pd.DataFrame(y_vals_1, columns=["yhif", "yo2", "yp300", "yp53", "ycasp", "ykp"])
+    df1["time"] = t_vals_1
+    df1.to_csv("apoptosis_rk4_output_y0_1.csv", index=False)
+    
+    df0 = pd.DataFrame(y_vals_0, columns=["yhif", "yo2", "yp300", "yp53", "ycasp", "ykp"])
+    df0["time"] = t_vals_0
+    df0.to_csv("apoptosis_rk4_output_y0_0.csv", index=False)
+    
+    # --- Plotting the Results ---
+    labels = ["y_hif(t)", "y_o2(t)", "y_p300(t)", "y_p53(t)", "y_casp(t)", "y_kp(t)"]
+    fig, axs = plt.subplots(3, 2, figsize=(12, 10), constrained_layout=True)
+    fig.suptitle('Apoptosis Model: RK4 Solution for Two Initial Conditions', fontsize=16)
 
-# Export to CSV for both cases
-df1 = pd.DataFrame(y_vals_1, columns=["yhif", "yo2", "yp300", "yp53", "ycasp", "ykp"])
-df1["time"] = t_vals_1
-df1.to_csv("apoptosis_rk4_output_y0_1.csv", index=False)
+    for i, ax in enumerate(axs.flat):
+        ax.plot(t_vals_1, y_vals_1[:, i], 'b-', label='IC = [1,0,...]')
+        ax.plot(t_vals_0, y_vals_0[:, i], 'r--', label='IC = [0,0,...]')
+        ax.set_title(f'{labels[i]}')
+        ax.set_xlabel("Time")
+        ax.set_ylabel("Concentration")
+        ax.grid(True)
+        ax.legend()
 
-df0 = pd.DataFrame(y_vals_0, columns=["yhif", "yo2", "yp300", "yp53", "ycasp", "ykp"])
-df0["time"] = t_vals_0
-df0.to_csv("apoptosis_rk4_output_y0_0.csv", index=False)
-
-# Print error between the two initial conditions at t = (0, 25, 50, 75, 100)
-selected_times = [0, 25, 50, 75, 100]
-error_output = []
-error_output.append("\nError (absolute difference) between y0 = [1,0,0,0,0,0] and y0 = [0,0,0,0,0,0] at selected times:")
-for t_sel in selected_times:
-    # Find the index closest to t_sel in t_vals_1 and t_vals_0 (should be the same)
-    idx_1 = np.argmin(np.abs(t_vals_1 - t_sel))
-    idx_0 = np.argmin(np.abs(t_vals_0 - t_sel))
-    vals_1 = y_vals_1[idx_1]
-    vals_0 = y_vals_0[idx_0]
-    abs_err = np.abs(vals_1 - vals_0)
-    line = f"t = {t_sel}: "
-    for i, label in enumerate(["yhif", "yo2", "yp300", "yp53", "ycasp", "ykp"]):
-        line += f"err_{label} = {abs_err[i]:.6f}"
-        if i < 5:
-            line += ", "
-    error_output.append(line)
-
-# Plot results for both initial conditions
-labels = ["y_hif(t)", "y_o2(t)", "y_p300(t)", "y_p53(t)", "y_casp(t)", "y_kp(t)"]
-fig, axs = plt.subplots(3, 2, figsize=(10, 8))
-
-for i, ax in enumerate(axs.flat):
-    ax.plot(t_vals_1, y_vals_1[:, i], color='black', label='y0 = [1,0,0,0,0,0]')
-    ax.plot(t_vals_0, y_vals_0[:, i], color='red', linestyle='--', label='y0 = [0,0,0,0,0,0]')
-    ax.set_title(f'({chr(97+i)}) {labels[i]}')
-    ax.set_xlabel("t")
-    ax.set_ylabel(labels[i])
-    ax.grid(True)
-    ax.legend()
-
-plt.tight_layout()
-
-# Print the error output before showing the plot, so both appear at the same time
-for line in error_output:
-    print(line)
-
-plt.show()
-print(f"err_{label} = {abs_err[i]:.6f}", end=", " if i < 5 else "\n")
+    plt.show()
