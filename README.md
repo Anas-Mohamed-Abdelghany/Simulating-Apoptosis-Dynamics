@@ -1,7 +1,6 @@
 # Simulating the Dynamics of Programmed Cell Death 🧬
 
 ![GitHub top language](https://img.shields.io/github/languages/top/Anas-Mohamed-Abdelghany/Simulating-Apoptosis-Dynamics?style=for-the-badge)
-![GitHub last commit](https://img.shields.io/github/last-commit/Anas-Mohamed-Abdelghany/Simulating-Apoptosis-Dynamics?style=for-the-badge)
 
 This repository contains the source code, analysis scripts, and documentation for the paper **"Simulating the Dynamics of Programmed Cell Death,"** a project focused on the comprehensive evaluation of numerical and machine learning methods for solving an Ordinary Differential Equation (ODE) model of apoptosis.
 
@@ -117,7 +116,6 @@ The primary differences lie in the accuracy and efficiency of the solvers. The a
 
 The following graph shows a direct visual comparison of the solutions produced by different methods for the `HIF-1` variable. The superiority of the higher-order and adaptive methods is clear.
 
-|:-------------------------:|:-------------------------:|
 |<img width="500" alt="Baseline" src="Graphs/Baseline/solution_yhif.png">|<img width="500" alt="Method1" src="Graphs/Method 1/solution_yhif.png">|
 |<img width="500" alt="Method2" src="Graphs/Method 2/solution_yhif.png">|<img width="500" alt="PINN" src="Graphs/PINN/pinn_solution_comparison_yhif.png">|
 
