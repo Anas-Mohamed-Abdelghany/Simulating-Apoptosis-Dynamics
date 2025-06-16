@@ -9,10 +9,10 @@ This repository contains the source code, analysis scripts, and documentation fo
 ## 📖 Table of Contents
 * [Overview](#-overview)
 * [The Apoptosis Model](#-the-apoptosis-model)
-* [Methods Implemented](#-methods-implemented)
+* [Methods Logic](#-Methods-Logic)
 * [Project Structure](#-project-structure)
 * [How to Run the Analyses](#-how-to-run-the-analyses)
-* [Key Results and Visualizations](#-key-results-and-visualizations)
+* [Key Results and Visualizations](#-Simulation-Results-and-Discussion)
 * [Authors](#-authors)
 * [License](#-license)
 * [Acknowledgments](#-acknowledgments)
