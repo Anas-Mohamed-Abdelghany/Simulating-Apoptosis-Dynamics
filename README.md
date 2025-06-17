@@ -1,6 +1,6 @@
 # Simulating the Dynamics of Programmed Cell Death 🧬
 
-![image (5)](https://github.com/user-attachments/assets/fc7b1090-a525-40da-892f-cb01d94d0cb3)
+<img src="https://github.com/user-attachments/assets/fc7b1090-a525-40da-892f-cb01d94d0cb3" alt="Comparison of Apoptosis Solvers" width="700"/>
 
 ![GitHub repo size](https://img.shields.io/github/repo-size/Anas-Mohamed-Abdelghany/Simulating-Apoptosis-Dynamics)
 ![GitHub last commit](https://img.shields.io/github/last-commit/Anas-Mohamed-Abdelghany/Simulating-Apoptosis-Dynamics)
