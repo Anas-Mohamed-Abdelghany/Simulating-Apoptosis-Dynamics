@@ -145,7 +145,7 @@ The following table presents the calculated concentrations for each variable at 
 The following graph shows a direct visual comparison of the solutions produced by each method for the `HIF-1` variable.
 
 |<img width="500" alt="Baseline" src="Graphs/Baseline/solution_yhif.png">|<img width="500" alt="Method1" src="Graphs/Method 1/solution_yhif.png">|
-|<img width="500" alt="Method2" src="Graphs/Method 2/solution_yhif.png">
+|<img width="500" alt="Method2" src="Graphs/Method 2/solution_yhif.png">|<img width="500" height="375" alt="PINN" src="Graphs/PINN/PinnSolutionComparison_yhif.png">|
 
 ---
 
